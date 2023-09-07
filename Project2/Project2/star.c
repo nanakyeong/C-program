@@ -5,7 +5,6 @@ int main() {
 	int n;
 	scanf_s("%d", &n);
 	printf("%d층 피라미드\n", n);
-
 	for (int i = 1; i <= n; i++) {
 		for (int j = i; j <= n; j++) {
 			printf(" ");
