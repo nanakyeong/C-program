@@ -22,13 +22,13 @@ int main(void) {
     for (i = 1; i <= num_students; i++) {
 
         printf("학생 #%d-%d 학번 입력: ", num_students, i);
-        scanf_s("%d", &(std[i].sno));
+        scanf_s("%d", &std[i].sno);
 
         printf("학생 #%d-%d 이름 입력: ", num_students, i);
         scanf_s("%s", std[i].name, sizeof(std[i].name));
 
         printf("학생 #%d-%d 점수 입력: ", num_students, i);
-        scanf_s("%d", &(std[i].score));
+        scanf_s("%d", &std[i].score);
 
     }
  
@@ -41,10 +41,9 @@ int main(void) {
 
     }
 
-
     free(std);
     std = NULL;
-
+  
     return 0;
 
 }
