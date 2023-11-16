@@ -16,23 +16,18 @@ int main(void) {
 
         printf("학생 # %d-%d 성적 입력: ", num_students, i);
         scanf_s("%d", &score[i]);
-
-    }
-
-    for (i = 1; i <= num_students; i++) {
         total += score[i];
+
     }
+
     printf("총점: %d\n", total);
 
     for (i = 1; i <= num_students; i++) {
+
         printf("학생 # %d-%d 성적 출력: %d\n", num_students, i, score[i]);
     }
 
-    for (i = 1; i <= num_students; i++) {
-
-        avg = total / (double)num_students;
-    }
-
+    avg = total / (double)num_students;
     printf("평균 점수:  %.2f", avg);
 
     free(score);
