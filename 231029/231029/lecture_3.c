@@ -2,40 +2,42 @@
 #include <stdlib.h>
 
 typedef struct _NODE {
+
 	int data;
 	struct _NODE* next;
+
 } NODE;
 
 void print_list(NODE* head)
 {
 	printf("------------------\n");
-	NODE* p = head->next;
-	while (p != NULL) {
-		printf("%d\n", p->data);
-		p = p->next;
+	NODE*  curr = head->next;
+	while (curr != NULL) {
+		printf("%d\n", curr->data);
+		curr = curr->next;
 	}
-	printf("------------------\n");
+	printf("------------------\n"); //순환
 }
 
 void insert_node_last(NODE* head, int data)
 {
-	NODE* n = (NODE*)malloc(sizeof(NODE));
-	n->data = data;
-	n->next = NULL;
+	NODE* a2 = (NODE*)malloc(sizeof(NODE));
+	a2->data = data;
+	a2->next = NULL;
 
 	NODE* p = head;
 	while (p->next != NULL) p = p->next;
 
-	p->next = n;
+	p->next = a2; //노드 추가하기(2)
 }
 
 void insert_node_first(NODE* head, int data)
 {
-	NODE* n = (NODE*)malloc(sizeof(NODE));
-	n->data = data;
-	n->next = head->next;
+	NODE* a1 = (NODE*)malloc(sizeof(NODE));
+	a1->data = data;
+	a1->next = head->next;
 
-	head->next = n;
+	head->next = a1; //노트 추가하기(1)
 }
 
 void delete_node_last(NODE* head)
@@ -53,10 +55,10 @@ void delete_node_last(NODE* head)
 
 void delete_node_first(NODE* head)
 {
-	NODE* p = head->next->next;	// exception?
-	free(head->next);
+	NODE* p = head->next;
+	head->next = p->next;
 
-	head->next = p;
+	free(p); // 노드 삭제 (1)
 }
 
 int main()
@@ -87,5 +89,6 @@ int main()
 
 	delete_node_first(head);
 	print_list(head);
+
 	return 0;
 }
